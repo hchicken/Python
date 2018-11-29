@@ -9,7 +9,7 @@ class SendApp(Base):
             "code": 0,
             "msg": "发送成功"
         }
-        url = "http://cyfta.cyou-inc.com/engine/engine/send.action"
+        url = "xxxxxxxxxxxxxxx"
         my_get = requests.post(url, data=my_dict)
         my_success = my_get.json()
         if my_success.get("success") != True:
