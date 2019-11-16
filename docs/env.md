@@ -201,9 +201,16 @@
   ```
 
 #####  8、文件共享
-```bash
-mount -t cifs -o username=........,password=........,vers=2.0  //192.168.56.1/share /home/share
-```
-```bash
-mount -t vboxsf share /home/share/
-```
+
+* 直接挂载
+
+  ```bash
+  mount -t cifs -o username=........,password=........,vers=2.0  //192.168.56.1/share /home/share
+  ```
+
+* virtualBox文件挂载
+
+  ```bash
+  mount -t vboxsf share /home/share/
+  ```
+
