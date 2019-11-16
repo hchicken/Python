@@ -1,2 +1,1 @@
-# log_django
-日志监控
+# python基础
