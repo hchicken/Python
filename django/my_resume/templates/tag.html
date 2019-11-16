@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% load page_tag %}
+{% block muban %}
+        <div class="row" style="background-color: RGB(236,238,241);margin-top: 70px" >
+        {% include 'sort_nav.html' %}
+        <div class="row" style="margin: 0 5%" >
+            {% for resume in resumes_com %}
+            <div class="col-md-3 col-sm-6 col-xs-12 div1" >
+                <div class="div2" >
+                    <div class="div2_img1">
+                        <img  class="img1" src="{{ resume.resume_cover.url }}" width=220px  height=311px>
+                    </div>
+                    <div class="div2_ul_1">
+                        <ul class="ul_1">
+                            <li class="li_1">
+                                <p class="p1" style="display: none">{{ resume.id }}</p>
+                                <a class="a_down" href="{{ resume.resume_url.url }}"><img src="/static/images/xiazai1.png" width="16">&nbsp;立即下载</a>
+                            </li>
+                            <li class="li_2">
+                                <p class="p1" style="display: none">{{ resume.id }}</p>
+                                <a class="a_collect" href="javascript:void(0)"><img src="/static/images/SC.png" width="18">&nbsp;立即收藏</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="div3" style="background-color: white">
+                    <p>这是一个{{ resume.resume_type }}模板{{ resume.resume_name}}</p>
+                    <hr>
+                    <ul class="u2_1">
+                        <li class="li2_1"><img src="/static/images/xiazai2.png" width="16">&nbsp;{{ resume.resume_down }}</li>
+                        <li class="li2_2"><img src="/static/images/SC.png" width="16">&nbsp;{{ resume.resume_browse }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+            {% include 'page_tag.html' %}
+        </div>
+    </div>
+{% endblock %}

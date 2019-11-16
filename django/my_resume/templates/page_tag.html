@@ -1,0 +1,31 @@
+{% load page_tag %}
+{#这是分页的拆分#}
+<div class="text-center">
+    <ul class="pagination pagination-lg" >
+                    {% if resumes_com.has_previous %}
+                            <li><a href="?sort_resumes={{sort_resumes}}&page={{ resumes_com.previous_page_number }}">上一页</a></li>
+                        {% if page > 3  %}
+                            <li><a href="?sort_resumes={{sort_resumes}}&page=1">1</a></li>
+                        {% endif %}
+                    {% else %}
+                            <li><a href="javascript:void(0)">上一页</a></li>
+                    {% endif %}
+                    {% if page > 4  %}
+                        <li><a href="javascript:void(0)">...</a></li>
+                    {% endif %}
+                    {% autoescape off %}
+                    {% short_page page  sort_resumes  max_page  %}
+                    {% endautoescape %}
+                    {% if resumes_com.has_next %}
+                                {% if page|add:3 < max_page  %}
+                                        <li><a href="javascript:void(0)">...</a></li>
+                                    {% endif %}
+                                {% if page|add:2 < max_page %}
+                                    <li><a href="?sort_resumes={{sort_resumes}}&page={{ max_page }}">{{ max_page }}</a></li>
+                                {% endif %}
+                                <li><a href="?sort_resumes={{sort_resumes}}&page={{ resumes_com.next_page_number }}">下一页</a></li>
+                    {% else %}
+                            <li><a href="javascript:void(0)">下一页</a></li>
+                    {% endif %}
+    </ul>
+</div>

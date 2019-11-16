@@ -1,0 +1,86 @@
+<!DOCTYPE html >
+<html>
+<head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>登录</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" title="" rel="stylesheet"/>
+    <link title="orange" href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body onload="get_captcha_img(),clean_captcha()">
+
+<div style="height:1px;"></div>
+<div class="login">
+    <header>
+        <h1>登录</h1>
+    </header>
+    <div class="sr">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="name">
+                <label>
+                    <i class="sublist-icon glyphicon glyphicon-user"></i>
+                </label>
+                <input type="text" placeholder="这里输入登录名" name="username" class="name_inp" required>
+            </div>
+            <div class="name_check">
+                <label>
+                    <i class="sublist-icon glyphicon glyphicon-pencil"></i>
+                </label>
+                <input type="text" id="id_captcha" placeholder="请输入验证码" class="name_inp" name="captcha_inp" onblur="check_captcha()">
+                <img id="captcha_img" src="#" onclick="get_captcha_img()">
+            </div>
+            <div class="name">
+                <label>
+                    <i class="sublist-icon glyphicon glyphicon-pencil"></i>
+                </label>
+                <input type="password" placeholder="这里输入登录密码" name="passwd" class="name_inp" required>
+            </div>
+            <input class="dl" type="submit" value="登录">
+        </form>
+    </div>
+</div>
+
+<script>
+    function get_captcha_img() {
+        $.ajax({
+            url: "{% url 'apis:get_captcha' %}",
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                // 将数据生成图片
+                // todo
+                {#                var pic = to_pic(data);#}
+                {#                $('#captcha_img').attr('src', pic);#}
+                $('#captcha_img').attr('src', data);
+            }
+        });
+    };
+    function clean_captcha() {
+        $('#id_captcha').val("")
+    }
+    function check_captcha() {
+        var captcha_code = $('#id_captcha').val();
+        if (captcha_code.length == 0) {
+            return false
+        }
+        $.ajax({
+            url: '{% url 'apis:check_captcha' %}',
+            type: 'GET',
+            dataType: 'json',
+            data: {"captcha_code": captcha_code},
+            success: function (data) {
+                if (data.code == 400) {
+                    $('#id_captcha').val("")
+                    $('#id_captcha').attr("placeholder", "验证码输入错误");
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

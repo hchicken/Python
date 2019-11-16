@@ -1,0 +1,64 @@
+<!--登录注册导航-->
+<div class="row" id="nav_logo">
+    <div class="col-md-2 col-sm-2 col-xs-2" style="background-color: RGB(235,235,237)">
+        <img class="logo1" src="/static/images/logo.jpeg" height="90">
+    </div>
+    <!--这是导航-->
+    <div class="col-md-8 col-sm-7 col-xs-7 " id="nav_direct">
+        <ul class="nav nav-pills">
+            <li class="{% if index_paginator %}active{% endif %}"><a href="{% url 'index' %}">首页</a></li>
+            {% for tag in tags %}
+                <li class="{% if tag.id|add:0 == tag_id|add:0 %}active{% endif %}"><a
+                        href="{% url 'tag' tag.id %}">{{ tag.type_name }}</a></li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    <div class="col-md-8 col-sm-7 col-xs-7">
+        <div id="nav_drop_down" style="width: 10%">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                &#9776;
+            </button>
+            <ul class="dropdown-menu nav">
+                <li class="{% if index_paginator %}active{% endif %}"><a href="{% url 'index' %}">首页</a></li>
+                {% for tag in tags %}
+                    <li class="{% if tag.id|add:0 == tag_id|add:0 %}active{% endif %}"><a
+                            href="{% url 'tag' tag.id %}">{{ tag.type_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-7 col-xs-7">
+        <div id="nav_drop_down_login" style="width: 10%">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                &#9776;
+            </button>
+            <ul class="dropdown-menu nav">
+                <li class="{% if index_paginator %}active{% endif %}"><a href="{% url 'index' %}">首页</a></li>
+                {% for tag in tags %}
+                    <li class="{% if tag.id|add:0 == tag_id|add:0 %}active{% endif %}"><a
+                            href="{% url 'tag' tag.id %}">{{ tag.type_name }}</a></li>
+                {% endfor %}
+                {% if request.session.user.username %}
+                    <li><a href="javascript:void (0)">{{ request.session.user.username }} </a></li>
+                    <li><a href="{% url 'logout' %}">注销</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">登录</a></li>
+                    <li><a href="{% url 'reg' %}">注册</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-2 col-sm-3 col-xs-3 " id="log_reg">
+        <ul class="nav nav-pills log_reg" style="display: block;width: 150px">
+            {% if request.session.user.username %}
+                <li><a href="javascript:void (0)">{{ request.session.user.username }} </a></li>
+                <li><a href="{% url 'logout' %}">注销</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">登录</a></li>
+                <li><a href="{% url 'reg' %}">注册</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
