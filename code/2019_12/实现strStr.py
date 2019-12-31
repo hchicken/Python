@@ -26,7 +26,6 @@ class Solution:
         index = 0
         while len_haystack - len_needle >= index:
             if haystack[index:index + len_needle] == needle:
-                print(index)
                 return index
             else:
                 index += 1
@@ -35,6 +34,6 @@ class Solution:
 
 if __name__ == "__main__":
     my_class = Solution()
-    haystack = "mississippi"
-    needle = "issip"
+    haystack = "1"
+    needle = ""
     my_def = my_class.strStr(haystack=haystack, needle=needle)
