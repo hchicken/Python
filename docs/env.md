@@ -1,8 +1,6 @@
-[toc]
-#### windows下虚拟机远程开发环境配置
+#### windows+Linux开发环境搭建
 
 #####  1、IP配置
-
 * 文件：/etc/sysconfig/network-scripts/ifcfg-ens33
 
   ```bash
