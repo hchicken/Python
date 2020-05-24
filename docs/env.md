@@ -1,6 +1,9 @@
-#### windows+Linux开发环境搭建
 
-#####  1、IP配置
+# windows+Linux开发环境搭建
+
+## Linux环境配置
+
+### 1.IP配置
 
 * 文件：/etc/sysconfig/network-scripts/ifcfg-ens33
 
@@ -13,7 +16,7 @@
   DNS1=8.8.8.8            # DNS服务器
 ```
 
-##### 2、selinux配置
+### 2.selinux配置
 
 * 直接关闭(立马生效)
 
@@ -28,7 +31,7 @@
   SELINUX=disabled  # 重启linxu是自动关闭
 ```
 
-##### 3、yum源配置
+### 3.yum源配置
 
 * wget安装
 
@@ -55,23 +58,25 @@
   yum install epel-release -y
 ```
 
-##### 4、python安装（3.65）
+## python环境配置
 
-* 依赖安装：
+### 1.依赖安装
 
 ```bash
   yum groupinstall 'Development Tools' -y
   yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make   mysql-devel libffi-devel  gdbm-devel xz-devel  -y
 ```
 
-* 下载与解压
+### 2.python下载与安装
+
+* 下载
 
 ```bash
   wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
   tar -zxvf  Python-3.6.5.tgz
 ```
 
-* 编译安装
+* 安装
 
 ```bash
   cd Python-3.6.5
@@ -129,10 +134,9 @@
   workon                            # 选择虚拟环境
   deactivate                        # 退出虚拟环境
   rmvirtualenv                      # 删除虚拟环境
-  independent comment)
 ```
 
-##### 5、mysql安装(centos7默认是mariadb)
+## mysql安装(centos7默认是mariadb)
 
 * 安装mysql
 
@@ -149,7 +153,7 @@
   skip-grant-tables                    # 删除配置文件中
 ```
 
-##### 6、nginx
+## nginx安装
 
 * nginx安装
 
@@ -178,7 +182,7 @@
   }
 ```
 
-##### 7、node(linxu下直接安装，无需配置)
+## node安装
 
 * node安装
 
@@ -198,7 +202,7 @@
   n stable
 ```
 
-##### 8、文件共享
+## 文件共享
 
 * 直接挂载
 
