@@ -4,6 +4,9 @@
 # @Author  : Greens
 
 
+import time
+
+
 class Solution:
     def my_sorted(self, x: list) -> list:
         my_len = len(x)
@@ -20,5 +23,7 @@ class Solution:
 
 if __name__ == "__main__":
     my_class = Solution()
-    my_list = [4, 6, 1, 2, 9, 7, 6]
+    start = time.time()
+    my_list = list(range(10000, -1, -1))
     my_ret = my_class.my_sorted(my_list)
+    print(time.time() - start)

@@ -1,16 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2020/5/26 22:48
+# @Time    : 2020/5/27 21:08
 # @Author  : Greens
+
 import time
 
 
 class Solution:
     def my_sorted(self, x: list) -> list:
-        for i in range(len(x) - 1, -1, -1):
-            for j in range(i):
-                if x[j] >= x[j + 1]:
-                    x[j], x[j + 1] = x[j + 1], x[j]
+        list_len = len(x)
+        for i in range(1, list_len):
+            key = x[i]
+            for j in range(i - 1, -1, -1):
+                if x[j] > key:
+                    x[j + 1] = x[j]
+                    x[j] = key
+                else:
+                    break
         return x
 
 
