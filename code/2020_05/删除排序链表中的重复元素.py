@@ -28,6 +28,9 @@ class ListNode:
 
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
+        """
+        删除链表中的重复元素
+        """
         node = head
         while node and node.next:
             if node.val == node.next.val:
