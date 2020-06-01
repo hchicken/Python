@@ -22,12 +22,21 @@ class LinkedList:
         self.__size = 0
         self.__head = Node(item)
 
+    def is_empty(self):
+        """
+        判断列表为空
+        """
+        return self.__size == 0
+
     def put(self, item):
         """
         在头部插入一个数据
         """
         node = Node(item, self.__head.next)
-        self.__head.next = node
+        if self.is_empty():
+            self.__head = node
+        else:
+            self.__head.next = node
         self.__size += 1
 
     def append(self, item):
@@ -36,9 +45,12 @@ class LinkedList:
         """
         node = Node(item)
         n = self.__head
-        for i in range(self.__size):
-            n = n.next
-        n.next = node
+        if self.is_empty():
+            self.__head = node
+        else:
+            for i in range(self.__size):
+                n = n.next
+            n.next = node
         self.__size += 1
 
     def insert(self, index: int, item):
@@ -58,6 +70,16 @@ class LinkedList:
             self.__size += 1
         else:
             print("插入失败")
+
+    def get(self, index):
+        """
+        获取索引处的节点
+        """
+        if index <= self.__size:
+            node = self.__head
+            for i in range(index):
+                node = node.next
+            return node.item
 
     def remove(self, index: int):
         """
@@ -86,13 +108,13 @@ class LinkedList:
         链表置空
         """
         self.__head = Node()
-        return self.__size == 0
+        self.__size = 0
 
     def __str__(self):
         """
         打印链表是输出
         """
-        p = self.__head.next
+        p = self.__head
         ret_lit = []
         while p:
             ret_lit.append(p.item)
@@ -102,9 +124,10 @@ class LinkedList:
 
 if __name__ == "__main__":
     my_list = LinkedList()
-    my_list.put("tan")
-    my_list.put("tan2")
-    my_list.insert(0, "1")
+    my_list.put("1")
+    my_list.put("2")
+    my_list.insert(0, "7")
     print(my_list)
-    tan = my_list.remove(2)
+    tan = my_list.remove(1)
     print(tan)
+    print(my_list.get(1))
