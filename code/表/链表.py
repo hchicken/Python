@@ -33,10 +33,8 @@ class LinkedList:
         在头部插入一个数据
         """
         node = Node(item, self.__head.next)
-        if self.is_empty():
-            self.__head = node
-        else:
-            self.__head.next = node
+
+        self.__head.next = node
         self.__size += 1
 
     def append(self, item):
@@ -45,12 +43,10 @@ class LinkedList:
         """
         node = Node(item)
         n = self.__head
-        if self.is_empty():
-            self.__head = node
-        else:
-            for i in range(self.__size):
-                n = n.next
-            n.next = node
+
+        for i in range(self.__size):
+            n = n.next
+        n.next = node
         self.__size += 1
 
     def insert(self, index: int, item):
@@ -86,7 +82,7 @@ class LinkedList:
         删除指定位置的节点
         """
         if index < self.__size:
-            n = self.__head
+            n = self.__head.next
             for i in range(index):
                 n = n.next
             # 需要删除的节点
@@ -121,13 +117,31 @@ class LinkedList:
             p = p.next
         return str(ret_lit)
 
+    def reverse(self):
+        """
+        反转链表
+        """
+        if self.is_empty():
+            return
+        else:
+            self.__reverse(self.__head.next)
+
+    def __reverse(self, node):
+        """
+        反转
+        """
+        # 当最后一个节点时next为null
+        if node.next == None:
+            self.__head.next = node
+            return node
+        pre = self.__reverse(node.next)
+        pre.next = node
+        node.next = None
+        return node
+
 
 if __name__ == "__main__":
     my_list = LinkedList()
     my_list.put("1")
     my_list.put("2")
-    my_list.insert(0, "7")
-    print(my_list)
-    tan = my_list.remove(1)
-    print(tan)
-    print(my_list.get(1))
+

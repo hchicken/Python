@@ -22,7 +22,7 @@ class Node:
 
 class TowWayLinkList:
     """
-    定义一个双喜是
+    定义一个双向链表
     """
 
     def __init__(self):
@@ -129,6 +129,12 @@ class TowWayLinkList:
             ret.append(p.item)
             p = p.next
         return ret
+
+    def size(self):
+        """
+        链表的长度
+        """
+        return self.__size
 
     def __str__(self):
         """
