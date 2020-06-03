@@ -55,8 +55,14 @@ class Queue():
         # 需要出的节点
         old_node = self.__head.next
         self.__head.next = old_node.next
-        self.__size -= 0
+        self.__size -= 1
         return old_node.item
+
+    def size(self):
+        """
+        获取队列的大小
+        """
+        return self.__size
 
     def __str__(self):
         """
@@ -78,3 +84,5 @@ if __name__ == "__main__":
     a = my_queue.de_queue()
     print(a)
     print(my_queue)
+    size = my_queue.size()
+    print(size)
