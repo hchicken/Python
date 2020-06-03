@@ -27,8 +27,11 @@ class Stack:
         """
         压栈
         """
+        # 久节点
         old_node = self.__head.next
+        # 需要进栈的节点
         new_node = Node(item=item)
+        # new next 为 old
         new_node.next = old_node
         self.__head.next = new_node
         self.__size += 1
@@ -62,7 +65,10 @@ class Stack:
         return str(ret)
 
 
-def deal():
+def parentheses():
+    """
+    括号匹配
+    """
     my_strs = "((tanzhihao))"
 
     my_dict = {
@@ -81,6 +87,37 @@ def deal():
     return my_stack.size() == 0
 
 
+def count(my_str):
+    pass
+
+
+def polish(my_list: list) -> int:
+    """
+    逆波兰
+    """
+    my_stack = Stack()
+    sum = 0
+    for i in my_list:
+        if isinstance(i, int):
+            my_stack.push(i)
+        else:
+            num1 = my_stack.pop()
+            num2 = my_stack.pop()
+            if i == "+":
+                sum = num2 + num1
+            if i == "-":
+                sum = num2 - num1
+            if i == "*":
+                sum = num2 * num1
+            if i == "/":
+                sum = num2 / num1
+            my_stack.push(sum)
+    return my_stack.pop()
+
+
 if __name__ == "__main__":
-    a = deal()
-    print(a)
+    ret = property()
+    print(ret)
+    my_list = [4, 1, 2, 8, "+", "-", "*"]
+    ret1 = polish(my_list)
+    print(ret1)

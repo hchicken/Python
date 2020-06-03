@@ -144,4 +144,3 @@ if __name__ == "__main__":
     my_list = LinkedList()
     my_list.put("1")
     my_list.put("2")
-
