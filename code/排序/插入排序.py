@@ -8,6 +8,9 @@ import time
 
 class Solution:
     def my_sorted(self, x: list) -> list:
+        """
+        插入排序
+        """
         list_len = len(x)
         for i in range(1, list_len):
             key = x[i]
@@ -23,6 +26,7 @@ class Solution:
 if __name__ == "__main__":
     my_class = Solution()
     start = time.time()
-    my_list = list(range(10000, -1, -1))
+    my_list = [5,7,5,3,1,23]
     my_ret = my_class.my_sorted(my_list)
+    print(my_ret)
     print(time.time() - start)

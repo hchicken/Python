@@ -8,6 +8,9 @@ import time
 
 class Solution:
     def my_sorted(self, x: list) -> list:
+        """
+        分组的插入排序
+        """
         list_len = len(x)
         # 根据数组长度获取h的初始值
         h = 1

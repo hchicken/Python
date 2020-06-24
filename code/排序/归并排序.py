@@ -9,6 +9,9 @@ import time
 
 class Solution:
     def my_sorted(self, x: list) -> list:
+        """
+        归并排序
+        """
         list_len = len(x)
         # 设置一个退出条件
         if list_len <= 1:

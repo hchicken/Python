@@ -9,6 +9,9 @@ import time
 
 class Solution:
     def my_sorted(self, x: list) -> list:
+        """
+        选择排序
+        """
         my_len = len(x)
         for i in range(my_len - 1):
             # 记录下标

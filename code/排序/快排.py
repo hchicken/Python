@@ -8,6 +8,9 @@ import time
 
 class Solution:
     def my_sorted(self, x: list) -> list:
+        """
+        快排/
+        """
         return self.quit_sorte(x, 0, len(x) - 1)
 
     def quit_sorte(self, my_list, l, r) -> list:
