@@ -23,7 +23,7 @@ node5 = Node(item=5, next=node4)
 fast = node5
 slow = node5
 while fast.next != None:
-   slow=slow.next
-   fast=fast.next.next
+    slow = slow.next
+    fast = fast.next.next
 
 print(slow.item)
