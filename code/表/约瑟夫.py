@@ -50,7 +50,6 @@ class Joseph:
         while n != n.next:
             count += 1
             if count == 3:
-                print(n.item)
                 before.next = n.next
                 n = n.next
                 count = 0
