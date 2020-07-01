@@ -34,6 +34,7 @@ HG[3|B[2|CA]]F−>HG[3|BCACA]F−> HGBCACABCACABCACAF
 
 class Solution:
     def getString(self, my_strings):
+        # 模拟一个栈
         my_list1 = []
         # 开始遍历
         for my_string in my_strings:
