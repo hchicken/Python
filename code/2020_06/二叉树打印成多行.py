@@ -23,14 +23,22 @@ class Solution:
         # write code here
         nodes = [pRoot]
         keys = []
-        while len(nodes) > 0:
-            node = nodes.pop(0)
-            if node.left:
-                nodes.append(node.left)
-            if node.right:
-                nodes.append(node.right)
-            keys.append(node.val)
+        while nodes:
+            # 记录每一层的值
+            curList = []
 
+            # 记录每一层的节点
+            nextLayer = []
+
+            # 遍历每一层
+            for node in nodes:
+                curList.append(node.val)
+                if node.left:
+                    nextLayer.append(node.left)
+                if node.right:
+                    nextLayer.append(node.right)
+            keys.append(curList)
+            nodes = nextLayer
         return keys
 
 

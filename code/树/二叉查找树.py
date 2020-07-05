@@ -191,7 +191,7 @@ class Tree:
         """
         nodes = [self.__root]
         keys = []
-        while len(nodes) > 0:
+        while nodes:
             node = nodes.pop(0)
             if node.left:
                 nodes.append(node.left)

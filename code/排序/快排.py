@@ -47,3 +47,5 @@ if __name__ == "__main__":
     my_ret = my_class.my_sorted(my_list)
     print(my_ret)
     print(time.time() - start)
+    print(my_list.sort())
+    print(time.time() - start)
