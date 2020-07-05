@@ -20,7 +20,8 @@ class TreeNode:
 class Solution:
     # 返回二维列表[[1,2],[4,5]]
     def Print(self, pRoot):
-        # write code here
+        if not pRoot:
+            return []
         nodes = [pRoot]
         keys = []
         while nodes:
