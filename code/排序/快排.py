@@ -19,34 +19,31 @@ class Solution:
         """
 
         if r > l:
-            base = self.partition(my_list, l, r)
-            self.quit_sorte(my_list, l, base - 1)
-            self.quit_sorte(my_list, base + 1, r)
+            q = self.partition(my_list, l, r)
+            self.quit_sorte(my_list, l, q - 1)
+            self.quit_sorte(my_list, q + 1, r)
         return my_list
 
-    def partition(self, my_list: list, l: int, r: int) -> list:
+    def partition(self, array: list, l: int, r: int) -> int:
         """
         切分
         """
-
-        base = my_list[l]
-        while r > l:
-            while r > l and my_list[r] > base:
-                r -= 1
-            my_list[l] = my_list[r]
-            while r > l and my_list[l] <= base:
-                l += 1
-            my_list[r] = my_list[l]
-        my_list[l] = base
-        return l
+        x = array[r]
+        i = l - 1
+        for j in range(l, r):
+            if array[j] <= x:
+                i += 1
+                array[i], array[j] = array[j], array[i]
+        array[i + 1], array[r] = array[r], array[i + 1]
+        return i + 1
 
 
 if __name__ == "__main__":
     my_class = Solution()
     start = time.time()
-    my_list = list(range(100000, -1, -1))
+    my_list = list(range(10))
     # my_list = [4, 2, 1, 4, 8, 4, 3, 6, 7]
 
     my_ret = my_class.my_sorted(my_list)
-    # print(my_ret)
+    print(my_ret)
     print(time.time() - start)
