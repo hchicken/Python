@@ -14,12 +14,12 @@
 class Solution:
     # 这里要特别注意~找到任意重复的一个值并赋值到duplication[0]
     # 函数返回True/False
-    def duplicate(self, numbers, duplication):
+    def duplicate(self, numbers, duplication: list):
         my_list = []
         for i in range(len(numbers)):
             aaa = numbers[i]
             if aaa in my_list:
-                duplication[0] = aaa
+                duplication.append(aaa)
                 return True
             my_list.append(aaa)
         return False
