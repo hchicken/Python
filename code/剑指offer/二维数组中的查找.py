@@ -34,6 +34,23 @@ class Solution:
                     return True
         return False
 
+    def find(self, matrix: List[List[int]], target: int) -> bool:
+        m = len(matrix) - 1  # 行
+        n = len(matrix[0]) - 1  # 列
+        i = 0
+        j = n
+
+        # 从右上角开始找
+        while i <= m and j >= 0:
+            value = matrix[i][j]
+            if value > target:
+                j -= 1
+            elif value < target:
+                i += 1
+            else:
+                return True
+        return False
+
 
 if __name__ == '__main__':
     my_class = Solution()
@@ -44,5 +61,5 @@ if __name__ == '__main__':
         [10, 13, 14, 17, 24],
         [18, 21, 23, 26, 30]
     ]
-    ret = my_class.findNumberIn2DArray(my_list, 2)
+    ret = my_class.find(my_list, 2)
     print(ret)
