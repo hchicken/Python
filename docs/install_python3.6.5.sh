@@ -3,7 +3,7 @@
 # 安装python3.65
 yum groupinstall 'Development Tools' -y
 yum install -y sqlite-devel ncurses-devel ncurses-libs zlib-devel mysql-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel openssl-devel
-wget wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
+wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
 tar -zxvf Python-3.6.5.tgz
 cd Python-3.6.5
 ./configure --prefix=/usr/local/python3.6  --enable-shared
